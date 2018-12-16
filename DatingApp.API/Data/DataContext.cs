@@ -13,5 +13,7 @@ namespace DatingApp.API.Data
         /**
         telling entity framework about our properties */
         public DbSet<Value> Values { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
