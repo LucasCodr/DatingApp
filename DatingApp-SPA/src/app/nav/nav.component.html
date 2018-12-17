@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+  <a class="navbar-brand" href="#">DatingApp</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Matches</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Messages</a>
+    </li>
+  </ul>
+
+  <dx-menu
+  [items]="menuItems"
+  displayExpr="name" (onItemClick)="itemClick($event)" *ngIf="authService.loggedIn()">
+</dx-menu>
+  <form class="form-inline my-2 my-lg-0" (submit)="onFormSubmit($event)" #loginForm="ngForm">
+    <dx-validation-group *ngIf="!authService.loggedIn()">
+        <dx-text-box placeholder="Username" [(value)]="user.username" [maxLength]=10 class="mr-sm-2">
+            <dx-validator [validationRules]="loginRules"></dx-validator>
+          </dx-text-box>
+      
+          <dx-text-box  placeholder="Password" mode="password" [(value)]="user.password" class="mr-sm-2">
+            <dx-validator [validationRules]="passwordRules"></dx-validator>
+          </dx-text-box>
+      
+          <dx-button class="" text="Login" type="success" icon="user" (onClick)="send($event)" [useSubmitBehavior]=true 
+          [disabled]="!user.username.length || !user.password.length"></dx-button>
+
+    </dx-validation-group>
+  </form>
+</nav>

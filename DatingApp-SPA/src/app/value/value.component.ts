@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import notify from 'devextreme/ui/notify';
 
 @Component({
   selector: 'app-value',
@@ -10,6 +11,22 @@ import { HttpClient } from '@angular/common/http';
 export class ValueComponent implements OnInit {
 
     value: any;
+    data: any = {
+      name: '',
+      password: '',
+      email: ''
+    };
+
+    buttonOptions = {
+        text: 'Register',
+        type: 'success',
+        useSubmitBehavior: true
+    };
+
+    onClick() {
+      console.log(this.data);
+      notify('hehe');
+    }
 
     constructor(private http: HttpClient) { }
 
