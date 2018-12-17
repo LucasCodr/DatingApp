@@ -24,15 +24,8 @@ export class AuthService {
       );
   }
 
-  loggedIn () {
-    const token = localStorage.getItem('token');
+  register (model: any) {
 
-    return !!token;
+    return this.$http.post(`${this.baseUrl}register`, model);
   }
-
-  logOut () {
-    localStorage.removeItem('token');
-    console.log('logged out');
-  }
-
 }

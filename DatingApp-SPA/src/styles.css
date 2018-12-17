@@ -3,6 +3,15 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/devextreme/dist/css/dx.common.css';
 @import '../node_modules/devextreme/dist/css/dx.light.css';
-dx-validation-group {
+dx-validation-group.nav {
     display: flex;
+}
+
+.form-register {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.dx-field-item-label-text {
+    display: none;
 }

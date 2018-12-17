@@ -54,13 +54,24 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
+  loggedIn () {
+    const token = localStorage.getItem('token');
+
+    return !!token;
+  }
+
+  logOut () {
+    localStorage.removeItem('token');
+    console.log('logged out');
+  }
+
   itemClick(e) {
     switch (e.itemData.action) {
       case 'profile':
         window.location.href = '#';
         break;
       case 'logout':
-        this.authService.logOut();
+        this.logOut();
         break;
     }
   }

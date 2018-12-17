@@ -15,10 +15,10 @@
 
   <dx-menu
   [items]="menuItems"
-  displayExpr="name" (onItemClick)="itemClick($event)" *ngIf="authService.loggedIn()">
+  displayExpr="name" (onItemClick)="itemClick($event)" *ngIf="loggedIn()">
 </dx-menu>
   <form class="form-inline my-2 my-lg-0" (submit)="onFormSubmit($event)" #loginForm="ngForm">
-    <dx-validation-group *ngIf="!authService.loggedIn()">
+    <dx-validation-group *ngIf="!loggedIn()" class="nav">
         <dx-text-box placeholder="Username" [(value)]="user.username" [maxLength]=10 class="mr-sm-2">
             <dx-validator [validationRules]="loginRules"></dx-validator>
           </dx-text-box>

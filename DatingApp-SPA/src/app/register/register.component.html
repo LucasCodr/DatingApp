@@ -1,0 +1,16 @@
+<form class="form-register" style="display: block;">
+    <h3 class="text-center">Register</h3>
+    <hr>
+    <dx-validation-group>
+        <dx-text-box placeholder="Username" [(value)]="model.username" [maxLength]=10 class="mb-2">
+          </dx-text-box>
+      
+          <dx-text-box  placeholder="Password" mode="password" [(value)]="model.password" class="mb-2">
+          </dx-text-box>
+
+          <div class="text-center">
+              <dx-button type="default" text="Register" stylingMode="outlined" class="mr-1" (click)="register()"></dx-button>
+              <dx-button type="normal" text="Cancel" stylingMode="text" (click)="cancel()"></dx-button>
+          </div>          
+    </dx-validation-group>
+</form>
