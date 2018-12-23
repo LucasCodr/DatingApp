@@ -85,7 +85,7 @@ export class NavComponent implements OnInit {
         notify('Succesfully logged in', 'success');
       }, error => {
         console.log(error);
-        notify('Error code: ' + error.error.status + ', ' + error.error.title, 'warning', 5000);
+        notify(error, 'warning', 5000);
       });
       console.log(this.user);
     }
