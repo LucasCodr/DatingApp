@@ -5,16 +5,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Data
 {
+    
     public class AuthRepository : IAuthRepository
     {
         private readonly DataContext _context;
         public AuthRepository(DataContext context)
         {
             _context = context;
-
         }
         public async Task<User> Login(string username, string password)
         {
+            // wait for the user be fetched from the db
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
 
             if (user == null)
@@ -28,12 +29,15 @@ namespace DatingApp.API.Data
 
         private bool VerifiedPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
+            // 
             using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt)) 
             {
+                // get the computed hash from the password bites
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
 
                 for (int i = 0; i < computedHash.Length; i++) 
                 {
+                    // 
                     if (computedHash[i] != passwordHash[i]) return false;
                 }
             }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import notify from 'devextreme/ui/notify';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
@@ -49,20 +50,18 @@ export class NavComponent implements OnInit {
 
   disabled = true;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private notifyService: AlertifyService) { }
 
   ngOnInit() {
   }
 
   loggedIn () {
-    const token = localStorage.getItem('token');
-
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logOut () {
     localStorage.removeItem('token');
-    console.log('logged out');
+    this.notifyService.message('Successfully logged out');
   }
 
   itemClick(e) {
@@ -82,10 +81,10 @@ export class NavComponent implements OnInit {
     if (result.isValid) {
 
       this.authService.login(this.user).subscribe(next => {
-        notify('Succesfully logged in', 'success');
+        this.notifyService.success('Successfully logged in');
       }, error => {
         console.log(error);
-        notify(error, 'warning', 5000);
+        this.notifyService.error(error);
       });
       console.log(this.user);
     }

@@ -3,6 +3,9 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/devextreme/dist/css/dx.common.css';
 @import '../node_modules/devextreme/dist/css/dx.light.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+@import '../node_modules/bootswatch/dist/flatly/bootstrap.min.css';
 dx-validation-group.nav {
     display: flex;
 }

@@ -1,8 +1,9 @@
-<form class="form-register" style="display: block;">
+<form class="form-register" style="display: block;" *ngIf="!authService.loggedIn()">
     <h3 class="text-center">Register</h3>
     <hr>
     <dx-validation-group>
         <dx-text-box placeholder="Username" [(value)]="model.username" [maxLength]=10 class="mb-2">
+            <dx-validator [validationRules]=""></dx-validator>
           </dx-text-box>
       
           <dx-text-box  placeholder="Password" mode="password" [(value)]="model.password" class="mb-2">
