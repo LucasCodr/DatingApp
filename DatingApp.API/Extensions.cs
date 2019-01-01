@@ -1,10 +1,12 @@
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace DatingApp.API
 {
     public static class Extensions
     {
-        public static void AddApplicationError(this HttpResponse response, string message) {
+        public static void AddApplicationError(this HttpResponse response, string message) 
+        {
             #region Creating a new header
             // Building a new header passing an error message as its value
             response.Headers.Add("Application-Error", message);
@@ -13,6 +15,16 @@ namespace DatingApp.API
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");           
             #endregion            
+        }
+
+        public static int CalculateAge (this DateTime theDateTime) 
+        {
+            var age = DateTime.Today.Year - theDateTime.Year;
+
+            if (theDateTime.AddYears(age) > DateTime.Today)
+                age--;
+
+            return age;
         }
     }
 }
