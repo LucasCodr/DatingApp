@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="#">DatinApp</a>
+    <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active" >DatinApp</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
       aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,14 +8,14 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#" *ngIf="loggedIn()">Matches</a>
+        <li class="nav-item" routerLinkActive="active" >
+          <a class="nav-link" [routerLink]="['/members']" *ngIf="loggedIn()">Matches</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" *ngIf="loggedIn()">Lists</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/lists']"  *ngIf="loggedIn()">Lists</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" *ngIf="loggedIn()">Messages</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/messages']" *ngIf="loggedIn()">Messages</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" (submit)="onFormSubmit($event)" #loginForm="ngForm">
