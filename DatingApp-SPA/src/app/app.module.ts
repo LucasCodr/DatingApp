@@ -5,7 +5,14 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DxButtonModule, DxTextBoxModule, DxValidatorModule, DxValidationGroupModule, DxGalleryModule } from 'devextreme-angular';
+// devextreme modules
+import { DxButtonModule,
+         DxTextBoxModule,
+         DxValidatorModule,
+         DxValidationGroupModule,
+         DxGalleryModule,
+         DxTextAreaModule } from 'devextreme-angular';
+// ---------------------------------------------------
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
@@ -25,6 +32,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -40,7 +50,8 @@ export function tokenGetter() {
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
-      MemberDetailComponent
+      MemberDetailComponent,
+      MemberEditComponent
    ],
    imports: [
       BrowserModule,
@@ -50,6 +61,7 @@ export function tokenGetter() {
       DxValidatorModule,
       DxValidationGroupModule,
       DxGalleryModule,
+      DxTextAreaModule,
       FormsModule,
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
@@ -67,9 +79,11 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      PreventUnsavedChanges,
       UserService,
       MemberDetailResolver,
-      MemberListResolver
+      MemberListResolver,
+      MemberEditResolver
    ],
    bootstrap: [
       AppComponent
